@@ -1,0 +1,18 @@
+SELECT
+	MAX (trips.duration),
+	weather.events,
+	weather.date
+FROM 
+	trips
+JOIN 	
+	weather
+ON 
+	trips.zip_code = weather.zip
+WHERE
+	LOWER (weather.events) LIKE LOWER('rain')
+GROUP BY weather.date, weather.events
+ORDER BY weather.date ASC
+LIMIT 50;
+
+	
+	

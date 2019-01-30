@@ -1,0 +1,10 @@
+SELECT 
+	trips.start_station,
+	COUNT(trips.start_station) AS start_num,
+	stations.dockcount
+FROM trips
+JOIN stations
+ON trips.start_terminal = stations.station_id
+GROUP BY trips.start_station, stations.dockcount
+ORDER BY stations.dockcount DESC
+LIMIT 5;
